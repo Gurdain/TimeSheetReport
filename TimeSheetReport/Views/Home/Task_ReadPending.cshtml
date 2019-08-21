@@ -1,0 +1,223 @@
+﻿@model TimeSheetReport.Models.TaskViewModel
+
+@{
+    ViewBag.Title = "Task_ReadPending";
+}
+
+@if (Convert.ToInt32(Session["userId"]) >= 1)
+{
+    <h2 align="center">Pending Tasks</h2>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+
+    using (Html.BeginForm("Attachment_Insert", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <h4 align="center">Task</h4>
+            <div>
+                <h4>@ViewBag.Message</h4>
+            </div>
+            <hr />
+            <table border="1">
+                <tr>
+                    <th style="text-align: center">
+                        <h5><b>Title</b></h5>
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="170">
+                        <h5><b>Description</b></h5>
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        <h5><b>Submit By</b></h5>
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        <h5><b>Trainee</b></h5>
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        <h5><b>Trainer</b></h5>
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        <h5><b>Status</b></h5>
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        <h5><b>Extension</b></h5>
+                    </th>
+                    @*&nbsp;
+                        <th style="text-align: center" width="150">
+                            @Html.DisplayNameFor(model => model.UserGuid)
+                        </th>
+                        &nbsp;
+                        <th style="text-align: center" width="150">
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+                        &nbsp;
+                        <th style="text-align: center" width="150">
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        &nbsp;
+                        <th style="text-align: center" width="150">
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        &nbsp;
+                        <th style="text-align: center" width="150">
+                            @Html.DisplayNameFor(model => model.DeletedOn)
+                        </th>
+                        &nbsp;
+                        <th style="text-align: center" width="150">
+                            @Html.DisplayNameFor(model => model.IsDeleted)
+                        </th>*@
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        <h5><b>Quick Actions</b></h5>
+                    </th>
+                </tr>
+                @foreach (TimeSheetReport.Models.Task task in Model.tasks)
+                {
+                    if (Convert.ToInt32(Session["userId"]) == task.TraineeId || Convert.ToInt32(Session["userId"]) == task.TrainerId && task.StatusId == 3)
+                    {
+                        <tr>
+                            <td style="text-align: center">
+                                @Html.Hidden("Id", task.Id)
+                                @task.Title
+                            </td>
+                            <td style="text-align: center">
+                                @task.Description
+                            </td>
+                            <td style="text-align: center">
+                                @task.SubmitBy
+                            </td>
+                            <td style="text-align: center">
+                                @for (int i = 0; i < Model.users.Count; i++)
+                                {
+                                    if (task.TraineeId == Model.users[i].Id)
+                                    {
+                                        @Model.users[i].Name
+                                    }
+                                }
+                            </td>
+                            <td style="text-align: center">
+                                @for (int i = 0; i < Model.users.Count; i++)
+                                {
+                                    if (task.TrainerId == Model.users[i].Id)
+                                    {
+                                        @Model.users[i].Name
+                                    }
+                                }
+                            </td>
+                            <td style="text-align: center">
+                                @if (Convert.ToInt32(Session["roleId"]) == 2 && task.StatusId == 3)
+                                {
+                                    for (int i = 0; i < Model.statuses.Count; i++)
+                                    {
+                                        if (task.StatusId == Model.statuses[i].Id)
+                                        {
+                                            @Model.statuses[i].Name
+                                        }
+                                    }
+                                    <br />
+                                    @*<a href="@Html.Action("Task_Update", "Home", new { id = task.Id })">
+                                            <span>
+                                                <i class="fa fa-check-square" style="color:green" data-toggle="tooltip" title="Mark as Done"></i>
+                                            </span>
+                                        </a>*@
+                                    @Html.ActionLink(" ", "Task_Done", "Home", new { id = task.Id }, new { @class = "fa fa-check-square", @style = "color:green", @title = "Mark as Done" })
+                                    <b style="color:royalblue">&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                    @Html.ActionLink(" ", "Task_Failed", "Home", new { id = task.Id }, new { @class = "fa fa-window-close", @style = "color:red", @title = "Mark as Failed" })
+                                }
+                                else if (Convert.ToInt32(Session["roleId"]) == 3 && task.StatusId == 5)
+                                {
+                                    for (int i = 0; i < Model.statuses.Count; i++)
+                                    {
+                                        if (task.StatusId == Model.statuses[i].Id)
+                                        {
+                                            @Model.statuses[i].Name
+                                        }
+                                    }
+                                    <br />
+                                    @Html.ActionLink(" ", "Task_Active", "Home", new { id = task.Id }, new { @class = "fa fa-briefcase", @style = "color:royalblue", @title = "Start Working" })
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.statuses.Count; i++)
+                                    {
+                                        if (task.StatusId == Model.statuses[i].Id)
+                                        {
+                                            @Model.statuses[i].Name
+                                        }
+                                    }
+                                }
+                            </td>
+                            <td style="text-align: center">
+                                @task.Extension
+                            </td>
+                            @*<td style="text-align: center">
+                                    @user.UserGuid
+                                </td>
+                                <td style="text-align: center">
+                                    @user.IsActive
+                                </td>
+                                <td style="text-align: center">
+                                    @user.CreatedOn
+                                </td>
+                                <td style="text-align: center">
+                                    @user.ModifiedOn
+                                </td>
+                                <td style="text-align: center">
+                                    @user.DeletedOn
+                                </td>
+                                <td style="text-align: center">
+                                    @user.IsDeleted
+                                </td>*@
+                            @if (Convert.ToInt32(Session["roleId"]) == 2)
+                            {
+                                <td style="text-align: center">
+                                    @if (task.StatusId == 2 || task.StatusId == 3)
+                                    {
+                                        for (int i = 0; i < Model.attachments.Count; i++)
+                                        {
+                                            if (Model.attachments[i].TaskId == task.Id && !Model.attachments[i].isDeleted)
+                                            {
+                                                <a href="~/Attachments/@Model.attachments[i].Title" download>Download Attachment</a>
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Extend", "Task_Extend", new { id = task.Id })
+                                    }
+                                    <br />
+                                    @Html.ActionLink("Edit", "Task_Update", new { id = task.Id }) |
+                                    @Html.ActionLink("Delete", "Task_Delete", new { id = task.Id }) |
+                                    @Html.ActionLink("Details", "Task_ReadById", new { id = task.Id })
+                                </td>
+                            }
+                            else if (Convert.ToInt32(Session["roleId"]) == 3 && task.StatusId != 2 && task.StatusId != 4)
+                            {
+                                <td style="text-align: center" class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="file" name="file" />
+                                        <input type="submit" value="Upload" />
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="text-align: center" class="form-group">
+                                    <h6>Unavailable</h6>
+                                </td>
+                            }
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Back to Dashboard", "Task_Dashboard")
+    </p>
+}

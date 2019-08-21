@@ -1,0 +1,124 @@
+﻿@model IEnumerable<TimeSheetReport.Models.Users>
+
+@{
+    ViewBag.Title = "Users_Read";
+}
+
+@if (Convert.ToInt32(Session["userId"]) >= 1)
+{
+    <h2 align="center">All Users</h2>
+
+    <div align="center">
+        <h4>Users</h4>
+        <div>
+            <h4>@ViewBag.Message</h4>
+        </div>
+        <hr />
+        <table border="1">
+            <tr>
+                <th style="text-align: center">
+                    <h5><b>User Name</b></h5>
+                </th>
+                &nbsp;
+                <th style="text-align: center" width="170">
+                    <h5><b>E-mail</b></h5>
+                </th>
+                @*&nbsp;
+                <th style="text-align: center" width="150">
+                    <h5><b>Password</b></h5>
+                </th>*@
+                &nbsp;
+                <th style="text-align: center" width="150">
+                    <h5><b>Role</b></h5>
+                </th>
+                &nbsp;
+                <th style="text-align: center" width="150">
+                    <h5><b>Phone</b></h5>
+                </th>
+                @*&nbsp;
+                    <th style="text-align: center" width="150">
+                        @Html.DisplayNameFor(model => model.UserGuid)
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        @Html.DisplayNameFor(model => model.DeletedOn)
+                    </th>
+                    &nbsp;
+                    <th style="text-align: center" width="150">
+                        @Html.DisplayNameFor(model => model.IsDeleted)
+                    </th>*@
+                &nbsp;
+                <th style="text-align: center" width="150">
+                    <h5><b>Quick Actions</b></h5>
+                </th>
+            </tr>
+            @foreach (TimeSheetReport.Models.Users user in Model)
+            {
+                if (!user.isDeleted && user.Id != Convert.ToInt32(Session["userId"]))
+                {
+                    <tr>
+                        <td style="text-align: center">
+                            @user.Name
+                        </td>
+                        <td style="text-align: center">
+                            @user.Email
+                        </td>
+                        @*<td style="text-align: center">
+                            @user.Password
+                        </td>*@
+                        <td style="text-align: center">
+                            @for (int i = 0; i < ViewBag.Data.Count; i++)
+                            {
+                                if (user.RoleId == ViewBag.Data[i].Id)
+                                {
+                                    @ViewBag.Data[i].Name
+                                }
+                            }
+                        </td>
+                        <td style="text-align: center">
+                            @user.Phone
+                        </td>
+                        @*<td style="text-align: center">
+                                @user.UserGuid
+                            </td>
+                            <td style="text-align: center">
+                                @user.IsActive
+                            </td>
+                            <td style="text-align: center">
+                                @user.CreatedOn
+                            </td>
+                            <td style="text-align: center">
+                                @user.ModifiedOn
+                            </td>
+                            <td style="text-align: center">
+                                @user.DeletedOn
+                            </td>
+                            <td style="text-align: center">
+                                @user.IsDeleted
+                            </td>*@
+                        <td style="text-align: center">
+                            @Html.ActionLink("Edit", "Users_Update", new { id = user.Id }) |
+                            @Html.ActionLink("Delete", "Users_Delete", new { id = user.Id }) |
+                            @Html.ActionLink("Details", "Users_ReadById", new { id = user.Id })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Back to Dashboard", "Dashboard")
+    </p>
+}

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+@if (Convert.ToInt32(Session["userId"]) >= 1)
+{
+    <div class="jumbotron" style="background-color:lightcoral">
+        @if (Session["userId"] != null)
+        {
+            <h1 style="color:white">Manager Dashboard</h1>
+            <p class="lead" style="color:white">Welcome @Session["userName"]</p>
+            @Html.ActionLink("Edit Details", "Users_Update", new { id = Convert.ToInt32(Session["userId"]) })
+        }
+        <div>
+            <h4 style="color:beige">@ViewBag.Message</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>User Menu</h2>
+            <p>@Html.ActionLink("Add User", "Users_Insert")</p>
+            <p>@Html.ActionLink("User List", "Users_Read")</p>
+        </div>
+        @*<div class="col-md-4">
+                <h2>User Menu</h2>
+                <p>@Html.ActionLink("Add User", "Users_Insert")</p>
+                <p>@Html.ActionLink("User List", "Users_Read")</p>
+            </div>
+            <div class="col-md-4">
+                    <h2>Hotel Type Menu</h2>
+                    <p>@Html.ActionLink("Add Type Of Hotel", "Types_Insert")</p>
+                    <p>@Html.ActionLink("Hotel Types List", "Types_Read")</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>User Role Menu</h2>
+                    <p>@Html.ActionLink("Add User Roles", "Role_Insert")</p>
+                    <p>@Html.ActionLink("User Roles List", "Role_Read")</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Hotel Room Menu</h2>
+                    <p>@Html.ActionLink("Add Rooms to a Hotel", "Room_Insert")</p>
+                    <p>@Html.ActionLink("Hotel Rooms List", "Room_Read")</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Room Booking Menu</h2>
+                    <p>@Html.ActionLink("Add Room Bookings", "Book_Insert")</p>
+                    <p>@Html.ActionLink("Room Booking List", "Book_Read")</p>
+                </div>*@
+    </div>
+}

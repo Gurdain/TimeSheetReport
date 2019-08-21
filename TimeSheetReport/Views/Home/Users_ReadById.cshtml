@@ -1,0 +1,101 @@
+﻿@model TimeSheetReport.Models.Users
+
+@{
+    ViewBag.Title = "Users_ReadById";
+}
+
+@if (Convert.ToInt32(Session["userId"]) >= 1)
+{
+    <h2 align="center">User Details</h2>
+
+    <div align="center">
+        <h4>Users</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RoleId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RoleId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DOB)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DOB)
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.createdOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.createdOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.modifiedOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.modifiedOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.deletedOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.deletedOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.isDeleted)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.isDeleted)
+                </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Users_Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Users_Read")
+    </p>
+}

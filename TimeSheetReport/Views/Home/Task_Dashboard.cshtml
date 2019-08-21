@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Task_Dashboard";
+}
+
+@if (Convert.ToInt32(Session["userId"]) >= 1)
+{
+    <div class="jumbotron" style="background-color:lightcoral">
+        @if (Convert.ToInt32(Session["roleId"]) == 2)
+        {
+            <h1 style="color:white">Trainer Dashboard</h1>
+            <p class="lead" style="color:white">Welcome @Session["userName"]</p>
+            @Html.ActionLink("Edit Details", "Users_Update", new { id = Convert.ToInt32(Session["userId"]) })
+        }
+        else if (Convert.ToInt32(Session["roleId"]) == 3)
+        {
+            <h1 style="color:white">Trainee Dashboard</h1>
+            <p class="lead" style="color:white">Welcome @Session["userName"]</p>
+            @Html.ActionLink("Edit Details", "Users_Update", new { id = Convert.ToInt32(Session["userId"]) })
+        }
+        <div>
+            <h4 style="color:beige">@ViewBag.Message</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Task Menu</h2>
+            @if (Convert.ToInt32(Session["roleId"]) == 2)
+            {
+                <p>@Html.ActionLink("Add Task", "Task_Insert")</p>
+                <p>@Html.ActionLink("Task List", "Task_Read")</p>
+                <p>@Html.ActionLink("Pending Task", "Task_ReadPending")</p>
+            }
+            else if (Convert.ToInt32(Session["roleId"]) == 3)
+            {
+                <p>@Html.ActionLink("Submit Task", "Task_Read", "Home")</p>
+                <p>@Html.ActionLink("Pending Task", "Task_ReadPending")</p>
+            }
+        </div>
+
+    </div>
+}

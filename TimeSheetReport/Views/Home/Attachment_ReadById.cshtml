@@ -1,0 +1,95 @@
+﻿@model TimeSheetReport.Models.Attachment
+
+@{
+    /**/
+
+    ViewBag.Title = "Attachment_ReadById";
+}
+
+@if (Convert.ToInt32(Session["userId"]) >= 1)
+{
+    <h2 align="center">Attachment Details</h2>
+
+    <div align="center">
+        <h4>Attachment</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Path)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Path)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TaskId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TaskId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.createdOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.createdOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.modifiedOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.modifiedOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.deletedOn)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.deletedOn)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.isDeleted)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.isDeleted)
+                </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Attachment_Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Attachment_Read")
+    </p>
+}
