@@ -1,0 +1,95 @@
+
+Date = 17-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Users_Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Users_Insert' expects parameter '@DOB', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Users_Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Users_Insert' expects parameter '@Password', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Users_Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Users_Insert' expects parameter '@DOB', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Users_Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 17-08-2019 00:00:00
+Error occured at method = Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Users_Insert' expects parameter '@DOB', which was not supplied.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Task_Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = Insert
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function Task_Insert has too many arguments specified.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Task_Read
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = Read
+Error code for the Exception is = -2147024809
+Message for the exception = Column 'Time' does not belong to table .
+
+Date = 19-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Task_Read
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = Read
+Error code for the Exception is = -2147024809
+Message for the exception = Column 'Time' does not belong to table .
+
+Date = 19-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Task_Read
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = Read
+Error code for the Exception is = -2147024809
+Message for the exception = Column 'Time' does not belong to table .
+
+Date = 19-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Task_Read
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
+
+Date = 19-08-2019 00:00:00
+Error occured at method = Read
+Error code for the Exception is = -2147024809
+Message for the exception = Column 'Time' does not belong to table .
+
+Date = 19-08-2019 00:00:00
+Error occured at method = http://localhost:64880/Home/Task_Read
+Error code for the Exception is = -2146232060
+Message for the exception = Procedure or function 'Exception_Insert' expects parameter '@Number', which was not supplied.
